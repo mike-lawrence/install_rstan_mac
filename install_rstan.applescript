@@ -11,16 +11,16 @@ install.packages('rstan', repos = 'https://cloud.r-project.org/', dependencies=T
 "
 
 set shell_code to "
-#install homebrew (automatically installs command-line tools)
+#if it's not present, install homebrew (automatically installs command-line tools)
 which brew | grep --quiet 'brew not found' && /usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"
 
-#set up caskroom
+#set up caskroom (ok to do again if it's already here)
 brew tap caskroom/cask
 
 #install R if not already present
 brew cask info r-app | grep --quiet 'Not installed' && brew cask install r-app
 
-#install RStudio
+#install RStudio if not already present
 brew cask info rstudio | grep --quiet 'Not installed' && brew cask install rstudio --force
 
 #install rstan 
